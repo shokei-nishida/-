@@ -1,0 +1,52 @@
+from vpython import *
+import numpy as np
+
+from numpy.random import *
+scene = canvas(width=1000, height=400) 
+
+
+cylinder(pos=vector(0,0,0), axis=vector(0,0.01,0),color=color.red)  
+
+x=0
+while x<6:　#これが核
+    a=np.array([[np.cos(x*np.pi/3),0,-np.sin(x*np.pi/3)],[0,1,0],[np.sin(x*np.pi/3),0,np.cos(x*np.pi/3)]])
+    b=np.array([[2],[0],[0]])
+    c=np.dot(a,b)
+    cylinder(pos=vector(c[0],c[1],c[2]), axis=vector(0,0.01,0),color=color.red)
+    
+    y=0
+    while y<2:　　　　　#これ以降、ほぼ同じ処理　これを繰り返し処理でまとめたい。わしゃどうすりゃあええんじゃ
+        aa=np.array([[np.cos(y*np.pi/3),0,-np.sin(y*np.pi/3)],[0,1,0],[np.sin(y*np.pi/3),0,np.cos(y*np.pi/3)]])
+        bb=np.array([c[0],c[1],c[2]])
+        cc=np.dot(aa,bb)
+        cylinder(pos=vector(cc[0]+c[0],cc[1]+c[1],c[2]+cc[2]), axis=vector(0,0.01,0),color=color.red)　　#座標
+        z=0　　　　
+        while z<2:　　　　
+            aaa=np.array([[np.cos(z*np.pi/3),0,-np.sin(z*np.pi/3)],[0,1,0],[np.sin(z*np.pi/3),0,np.cos(z*np.pi/3)]])
+            bbb=np.array([c[0],c[1],c[2]])
+            ccc=np.dot(aaa,bbb)
+            cylinder(pos=vector(ccc[0]+cc[0]+c[0],ccc[1]+cc[1]+c[1],c[2]+cc[2]+ccc[2]), axis=vector(0,0.01,0),color=color.red)　#座標がじゃっかん変わった
+            w=0
+            while w<2:
+                aaaa=np.array([[np.cos(w*np.pi/3),0,-np.sin(w*np.pi/3)],[0,1,0],[np.sin(w*np.pi/3),0,np.cos(w*np.pi/3)]])
+                bbbb=np.array([c[0],c[1],c[2]])
+                cccc=np.dot(aaaa,bbbb)
+                cylinder(pos=vector(cccc[0]+ccc[0]+cc[0]+c[0],cccc[1]+ccc[1]+cc[1]+c[1],c[2]+cc[2]+ccc[2]+cccc[2]), axis=vector(0,0.01,0),color=color.red) #また変わった
+                v=0
+                while v<2:
+                    aaaaa=np.array([[np.cos(v*np.pi/3),0,-np.sin(v*np.pi/3)],[0,1,0],[np.sin(v*np.pi/3),0,np.cos(v*np.pi/3)]])
+                    bbbbb=np.array([c[0],c[1],c[2]])
+                    ccccc=np.dot(aaaaa,bbbbb)
+                    cylinder(pos=vector(ccccc[0]+cccc[0]+ccc[0]+cc[0]+c[0],ccccc[1]+cccc[1]+ccc[1]+cc[1]+c[1],c[2]+cc[2]+ccc[2]+cccc[2]+ccccc[2]), axis=vector(0,0.01,0),color=color.red)
+                    u=0
+                    while u<2:
+                        aaaaaa=np.array([[np.cos(u*np.pi/3),0,-np.sin(u*np.pi/3)],[0,1,0],[np.sin(u*np.pi/3),0,np.cos(u*np.pi/3)]])
+                        bbbbbb=np.array([c[0],c[1],c[2]])
+                        cccccc=np.dot(aaaaaa,bbbbbb)
+                        cylinder(pos=vector(cccccc[0]+ccccc[0]+cccc[0]+ccc[0]+cc[0]+c[0],cccccc[1]+ccccc[1]+cccc[1]+ccc[1]+cc[1]+c[1],c[2]+cc[2]+ccc[2]+cccc[2]+ccccc[2]+cccccc[2]), axis=vector(0,0.01,0),color=color.red)
+                        u=u+1
+                    v=v+1
+                w=w+1
+            z=z+1
+        y=y+1
+    x=x+1
