@@ -15,7 +15,7 @@ while x<6:　#これが核
     cylinder(pos=vector(c[0],c[1],c[2]), axis=vector(0,0.01,0),color=color.red)
     
     y=0
-    while y<2:　　　　　#これ以降、ほぼ同じ処理　これを繰り返し処理でまとめたい。わしゃどうすりゃあええんじゃ
+    while y<2:　　　　　#これ以降、ほぼ同じ処理　これを繰り返し処理でまとめたい。
         aa=np.array([[np.cos(y*np.pi/3),0,-np.sin(y*np.pi/3)],[0,1,0],[np.sin(y*np.pi/3),0,np.cos(y*np.pi/3)]])  #aa（行列）の中の文字、ｙ
         bb=np.array([c[0],c[1],c[2]])　　　#bb(ベクトル)
         cc=np.dot(aa,bb)  #このwhile文のなかで、２回、かける。ｙ＝２だから。
