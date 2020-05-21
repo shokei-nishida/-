@@ -21,7 +21,7 @@ while x<10:
     r=c[2]
     
     z=0
-    while z<10:
+    while z<10:　　#ここで繰り返しをまとめようとした
         y=0
         while y<2:
             aa=np.array([[np.cos(y*np.pi/3),0,-np.sin(y*np.pi/3)],[0,1,0],[np.sin(y*np.pi/3),0,np.cos(y*np.pi/3)]])
